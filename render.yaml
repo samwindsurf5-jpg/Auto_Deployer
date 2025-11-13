@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: autodeploy-backend
+    env: node
+    plan: free
+    buildCommand: cd apps/backend && npm install && npm run build
+    startCommand: cd apps/backend && npm run start:prod
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres:Sam%402810@db.nzbnybbvrggrqihvgnhi.supabase.co:5432/postgres
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        value: tlpe0lwJ4nzgXr1ADkX4f1Ayq0nCZRSToI15JgUzqhisfcPNhevscZsyu3Y/3m1gUmO018beSEx3TPdypS6Lnw==
+      - key: MASTER_ENCRYPTION_KEY
+        value: AutoDeployMasterKey2024SecureProd!
+      - key: GITHUB_CLIENT_ID
+        value: Ov23lig6TBXJE57ARFIf
+      - key: GITHUB_CLIENT_SECRET
+        value: 6eb03676e4ba5f80172bce4443588341d93c443f

@@ -1,0 +1,35 @@
+{
+  "name": "autodeploy",
+  "version": "1.0.0",
+  "description": "Automated deployment platform from GitHub to production",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean",
+    "db:generate": "cd apps/backend && npx prisma generate",
+    "db:migrate": "cd apps/backend && npx prisma migrate dev",
+    "db:studio": "cd apps/backend && npx prisma studio",
+    "start:backend": "cd apps/backend && npm run start:prod",
+    "start:frontend": "cd apps/frontend && npm start",
+    "docker:build": "docker build -t autodeploy .",
+    "docker:up": "docker-compose up -d"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "turbo": "^1.10.16",
+    "typescript": "^5.2.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
